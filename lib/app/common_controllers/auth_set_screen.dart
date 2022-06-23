@@ -1,8 +1,9 @@
 import 'dart:developer';
 
-import 'package:aftab_neo_store/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../routes/app_pages.dart';
 
 class AuthSetScreenController extends GetxController {
   Rx<String?> _accessToken = Rx(null);

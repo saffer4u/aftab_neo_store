@@ -21,3 +21,17 @@ dev_dependencies:
 flutter: 
   uses-material-design: true
 
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Gotham
+      fonts:
+        - asset: assets/fonts/GothamBook.otf
+    - family: GothamBold
+      fonts:
+        - asset: assets/fonts/GothamBold.otf
+
+    - family: GothamMedium
+      fonts:
+        - asset: assets/fonts/GothamMedium.ttf
