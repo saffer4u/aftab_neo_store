@@ -1,4 +1,3 @@
-
 //     final apiResponse = apiResponseFromJson(jsonString);
 
 import 'dart:convert';
@@ -23,7 +22,9 @@ class ApiResponse {
 
   factory ApiResponse.fromJson(Map<String, dynamic> json) => ApiResponse(
         status: json["status"] == null ? null : json["status"],
-        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+        data: json["data"] == null
+            ? null
+            : Data.fromJson(json["data"] == false ? {} : json["data"]),
         message: json["message"] == null ? null : json["message"],
         userMsg: json["user_msg"] == null ? null : json["user_msg"],
       );

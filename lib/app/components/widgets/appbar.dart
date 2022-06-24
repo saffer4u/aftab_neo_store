@@ -10,6 +10,7 @@ AppBar customAppBar(
     Widget? leading,
     List<Widget>? action}) {
   return AppBar(
+    
     actions: action,
     leading: leading,
     backgroundColor: RED_COLOR800,

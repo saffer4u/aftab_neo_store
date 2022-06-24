@@ -6,4 +6,5 @@ enum Gender {
 enum AuthScreen{
   login,
   register,
+  forgetPassword,
 }

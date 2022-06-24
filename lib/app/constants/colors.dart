@@ -5,3 +5,4 @@ const RED_COLOR800 = Color.fromRGBO(198, 40, 40, 1);
 const WHITE_COLOR = Colors.white;
 const WHITE_COLOR70 = Color.fromRGBO(255, 255, 255, 0.702);
 const BLACK_COLOR = Colors.black;
+const GREEN_COLOR = Colors.green;
