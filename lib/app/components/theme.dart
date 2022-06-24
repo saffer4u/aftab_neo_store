@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../constants/colors.dart';
 import '../constants/fonts.dart';
-import 'package:flutter/material.dart';
 
 final ThemeData appThemeData = ThemeData(
   primaryColor: RED_COLOR700,

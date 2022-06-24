@@ -1,13 +1,19 @@
-import 'dart:developer';
-
+import '../models/api_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../components/enums.dart';
 import '../../../components/snackbars/small_snackbar.dart';
 import '../models/register_model.dart';
+import '../repositories/user_auth_provider.dart';
 
-class AuthenticationController extends GetxController {
+class AuthenticationController extends GetxController with StateMixin<dynamic> {
+  @override
+  void onInit() {
+    change(null, status: RxStatus.success());
+    super.onInit();
+  }
+
   //* Observable varialbes -------------->>>>>>>>>>>>
   var genderType = Gender.male.obs;
   var check = false.obs;
@@ -80,7 +86,7 @@ class AuthenticationController extends GetxController {
   }
 
   //* Other methods ---------->>>>>>>>>
-  register() {
+  register() async {
     if (registrationFormKey.currentState!.validate()) {
       if (check.value == false) {
         smallSnackbar(
@@ -88,6 +94,7 @@ class AuthenticationController extends GetxController {
           duration: 2,
         );
       } else {
+        //* Convert row data to object
         RegisterModel newUser = RegisterModel(
           first_name: firstNameController.text,
           last_name: lastNameController.text,
@@ -97,7 +104,17 @@ class AuthenticationController extends GetxController {
           password: passwordController.text.trim(),
           confirm_password: confirmPasswordController.text.trim(),
         );
-        log(newUser.toString());
+        // log(newUser.toString());
+        //* Start loading screen
+        change(null, status: RxStatus.loading());
+        //* Post data and get response from server
+        ApiResponse registrationResponse =
+            await UserAuthProvider().registerUser(newUser);
+        if (registrationResponse.status == 200) {
+          change(registrationResponse, status: RxStatus.success());
+        } else {
+          change(registrationResponse, status: RxStatus.error());
+        }
       }
     }
   }
