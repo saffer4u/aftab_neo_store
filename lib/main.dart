@@ -15,6 +15,7 @@ void main() {
   Get.put(AuthSetScreenController());
   runApp(
     GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "NeoStore",
       theme: appThemeData,
       getPages: AppPages.routes,

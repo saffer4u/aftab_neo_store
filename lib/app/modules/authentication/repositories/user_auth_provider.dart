@@ -1,11 +1,10 @@
 import 'dart:developer';
 
-import '../models/login_model.dart';
-
-import '../models/api_response_model.dart';
 import 'package:get/get_connect.dart';
 
 import '../../../constants/paths.dart';
+import '../models/api_response_model.dart';
+import '../models/login_model.dart';
 import '../models/register_model.dart';
 
 class UserAuthProvider extends GetConnect {

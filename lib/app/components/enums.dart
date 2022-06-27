@@ -8,3 +8,10 @@ enum AuthScreen{
   register,
   forgetPassword,
 }
+
+enum Position{
+  topLeft,
+  topRight,
+  bottomLeft,
+  bottomRight,
+}

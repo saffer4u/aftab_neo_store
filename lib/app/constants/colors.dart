@@ -6,3 +6,4 @@ const WHITE_COLOR = Colors.white;
 const WHITE_COLOR70 = Color.fromRGBO(255, 255, 255, 0.702);
 const BLACK_COLOR = Colors.black;
 const GREEN_COLOR = Colors.green;
+const GREY_COLOR = Colors.grey;

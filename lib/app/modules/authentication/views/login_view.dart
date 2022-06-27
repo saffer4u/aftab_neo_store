@@ -1,12 +1,13 @@
-import '../../../components/enums.dart';
-import '../../../constants/colors.dart';
-import '../controllers/authentication_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../components/enums.dart';
 import '../../../components/progress_indicaters/on_loading.dart';
 import '../../../components/widgets/background_image.dart';
 import '../../../components/widgets/customButton.dart';
 import '../../../components/widgets/customTextField.dart';
+import '../../../constants/colors.dart';
+import '../controllers/authentication_controller.dart';
 
 class LoginView extends GetView<AuthenticationController> {
   const LoginView({Key? key}) : super(key: key);

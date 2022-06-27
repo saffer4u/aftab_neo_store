@@ -1,15 +1,14 @@
 import 'dart:developer';
 
-import '../../../common_controllers/auth_set_screen.dart';
-import '../../../constants/colors.dart';
-import '../models/login_model.dart';
-
-import '../models/api_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common_controllers/auth_set_screen.dart';
 import '../../../components/enums.dart';
 import '../../../components/snackbars/small_snackbar.dart';
+import '../../../constants/colors.dart';
+import '../models/api_response_model.dart';
+import '../models/login_model.dart';
 import '../models/register_model.dart';
 import '../repositories/user_auth_provider.dart';
 
