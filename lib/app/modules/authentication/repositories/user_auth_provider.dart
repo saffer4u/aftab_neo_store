@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:aftab_neo_store/app/modules/authentication/models/login_model.dart';
+import '../models/login_model.dart';
 
 import '../models/api_response_model.dart';
 import 'package:get/get_connect.dart';
@@ -9,6 +9,8 @@ import '../../../constants/paths.dart';
 import '../models/register_model.dart';
 
 class UserAuthProvider extends GetConnect {
+
+  //* Register new user api call
   Future<ApiResponse> registerUser(RegisterModel userData) async {
     FormData formData = FormData(userData.toMap());
 
@@ -29,6 +31,7 @@ class UserAuthProvider extends GetConnect {
     }
   }
 
+  //* Login user api call
   Future<ApiResponse> loginUser(LoginModel loginUserData) async {
     FormData formData = FormData(loginUserData.toMap());
     try {
@@ -41,6 +44,22 @@ class UserAuthProvider extends GetConnect {
       return res;
     } catch (e) {
       log("Error while login : $e");
+      return ApiResponse(
+        status: 501,
+        message: "Something went wrong",
+      );
+    }
+  }
+
+  //* Forget passward api call
+  Future<ApiResponse> forgetPassword(FormData userMail) async {
+    try {
+      final response = await post(FORGET_PASSWORD_API_URL, userMail);
+      log("Server Response : ${response.body.toString()}");
+      ApiResponse res = apiResponseFromJson(response.body);
+      return res;
+    } catch (e) {
+      log("Error while forget passward");
       return ApiResponse(
         status: 501,
         message: "Something went wrong",

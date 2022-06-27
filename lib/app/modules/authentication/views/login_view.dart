@@ -1,6 +1,6 @@
-import 'package:aftab_neo_store/app/components/enums.dart';
-import 'package:aftab_neo_store/app/constants/colors.dart';
-import 'package:aftab_neo_store/app/modules/authentication/controllers/authentication_controller.dart';
+import '../../../components/enums.dart';
+import '../../../constants/colors.dart';
+import '../controllers/authentication_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../components/progress_indicaters/on_loading.dart';

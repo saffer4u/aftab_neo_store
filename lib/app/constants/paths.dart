@@ -4,3 +4,7 @@ const REGISTER_NEW_USER_API_URL =
 
 const LOGIN_NEW_USER_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/users/login";
+
+const FORGET_PASSWORD_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/users/forgot";
+    

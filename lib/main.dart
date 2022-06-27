@@ -11,7 +11,7 @@ import 'app/routes/app_pages.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  //* Set screen on the basis of user auth
+  //* Set screen on the basis of user state defined in this controller
   Get.put(AuthSetScreenController());
   runApp(
     GetMaterialApp(

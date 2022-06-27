@@ -201,9 +201,35 @@ class AuthenticationController extends GetxController with StateMixin<dynamic> {
     }
   }
 
-  void forgetPassword() {
+  void forgetPassword() async {
     if (forgetPasswordFormKey.currentState!.validate()) {
-      log("Valid email");
+      log("Forget password called");
+      FocusManager.instance.primaryFocus?.unfocus();
+      change(null, status: RxStatus.loading());
+      FormData userMail = FormData({'email': emailController.text});
+      ApiResponse forgetPassResp =
+          await UserAuthProvider().forgetPassword(userMail);
+
+      if (forgetPassResp.status == 200) {
+        change(forgetPassResp, status: RxStatus.success());
+        smallSnackbar(
+          textColor: WHITE_COLOR,
+          backgroundColor: GREEN_COLOR,
+          backgroundColorOpacity: 1,
+          text: "${(forgetPassResp.userMsg) ?? "Email sent successfully"}",
+        );
+        setScreen(AuthScreen.login);
+      } else {
+        change(forgetPassResp, status: RxStatus.success());
+
+        smallSnackbar(
+          text:
+              "${(forgetPassResp.userMsg) ?? "Login unsuccessful"} | Status : ${forgetPassResp.status}",
+          backgroundColorOpacity: 1,
+        );
+      }
+      emailController.clear();
+      passwordController.clear();
     }
   }
 
