@@ -24,7 +24,7 @@ class UserAuthProvider extends GetConnect {
     } catch (e) {
       log("Error while registring : $e");
       return ApiResponse(
-        status: 500,
+        status: 501,
         message: "Something went wrong",
       );
     }

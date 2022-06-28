@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';
+import '../../constants/fonts.dart';
 import '../enums.dart';
 
 class HomeGridItem extends StatelessWidget {
@@ -72,7 +73,7 @@ class HomeGridItem extends StatelessWidget {
                       title,
                       style: const TextStyle(
                         color: WHITE_COLOR,
-                        fontFamily: "Gotham",
+                        fontFamily: Font.Gotham,
                         fontSize: 23,
                       ),
                     ),
@@ -85,7 +86,7 @@ class HomeGridItem extends StatelessWidget {
                       title,
                       style: const TextStyle(
                         color: WHITE_COLOR,
-                        fontFamily: "Gotham",
+                        fontFamily: Font.Gotham,
                         fontSize: 23,
                       ),
                     ),
@@ -98,7 +99,7 @@ class HomeGridItem extends StatelessWidget {
                       title,
                       style: const TextStyle(
                         color: WHITE_COLOR,
-                        fontFamily: "Gotham",
+                        fontFamily: Font.Gotham,
                         fontSize: 23,
                       ),
                     ),
@@ -111,7 +112,7 @@ class HomeGridItem extends StatelessWidget {
                       title,
                       style: const TextStyle(
                         color: WHITE_COLOR,
-                        fontFamily: "Gotham",
+                        fontFamily: Font.Gotham,
                         fontSize: 23,
                       ),
                     ),

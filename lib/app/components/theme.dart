@@ -5,6 +5,7 @@ import '../constants/fonts.dart';
 
 final ThemeData appThemeData = ThemeData(
   primaryColor: RED_COLOR700,
+  visualDensity: VisualDensity.adaptivePlatformDensity,
 
   // fontFamily: 'GothamBold',
   textTheme: const TextTheme(

@@ -7,4 +7,7 @@ const LOGIN_NEW_USER_API_URL =
 
 const FORGET_PASSWORD_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/users/forgot";
-    
+const GET_USER_DATA_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/users/getUserData";
+
+const ACCESS_TOKEN = "accessToken";

@@ -1,11 +1,16 @@
-import '../../../constants/colors.dart';
+import 'dart:developer';
+
+import 'package:aftab_neo_store/app/modules/drawer/controllers/drawer_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../common_controllers/auth_set_screen.dart';
 import '../../../components/widgets/appbar.dart';
 import '../../../components/widgets/home_grid_item.dart';
+import '../../../constants/colors.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -16,11 +21,17 @@ class HomeView extends GetView<HomeController> {
       appBar: customAppBar(
         text: "NeoSTORE",
         size: 16,
-        action: [Icon(Icons.search)],
+        action: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () async {
+              log("Logout button pressed");
+              await Get.find<AuthSetScreenController>().setToken(null);
+            },
+          )
+        ],
         leading: InkWell(
-          onTap: (() {
-            // ZoomDrawer.of(context)!.toggle();
-          }),
+          onTap: Get.find<MainDrawerController>().toggleDrawer,
           child: const Icon(
             Icons.menu,
           ),
@@ -48,8 +59,7 @@ class HomeView extends GetView<HomeController> {
                           child: CircularProgressIndicator(
                             backgroundColor: RED_COLOR700,
                             color: BLACK_COLOR,
-                            value: loadingProgress.expectedTotalBytes !=
-                                    null
+                            value: loadingProgress.expectedTotalBytes != null
                                 ? loadingProgress.cumulativeBytesLoaded /
                                     loadingProgress.expectedTotalBytes!
                                 : null,
@@ -93,8 +103,7 @@ class HomeView extends GetView<HomeController> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: GridView.builder(
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
@@ -102,14 +111,12 @@ class HomeView extends GetView<HomeController> {
                 itemCount: controller.homeGridItems.length,
                 itemBuilder: (BuildContext context, int index) {
                   return HomeGridItem(
-                    iconPosition:
-                        controller.homeGridItems[index].iconPosition,
+                    iconPosition: controller.homeGridItems[index].iconPosition,
                     titlePosition:
                         controller.homeGridItems[index].titlePosition,
                     title: controller.homeGridItems[index].title,
                     icon: controller.homeGridItems[index].icon,
-                    edgeSpacing:
-                        controller.homeGridItems[index].edgeSpacing,
+                    edgeSpacing: controller.homeGridItems[index].edgeSpacing,
                   );
                 },
               ),
