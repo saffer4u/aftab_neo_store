@@ -1,23 +1,41 @@
 import 'package:get/get.dart';
 
-class ProductListController extends GetxController {
-  //TODO: Implement ProductListController
+import '../../../components/snackbars/small_snackbar.dart';
+import '../models/product_list_model.dart';
+import '../repositories/product_list_provider.dart';
 
-  final count = 0.obs;
+class ProductListController extends GetxController with StateMixin<dynamic> {
+  ProductsListModel productList = ProductsListModel();
+  int categoryId = 0;
+
   @override
-  void onInit() {
+  void onInit() async {
+    categoryId = Get.arguments as int;
+    await fetchProductList();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  //* Fetch list of products
+  Future<void> fetchProductList({
+    int limit = 10,
+    int pageNumber = 1,
+  }) async {
+    change(null, status: RxStatus.loading());
+    productList = await ProductListProvider().getProductList(
+      productCategoryId: categoryId,
+      limit: limit,
+      page: pageNumber,
+    );
 
-  @override
-  void onClose() {
-    super.onClose();
+    if (productList.status == 200) {
+      change(productList, status: RxStatus.success());
+    } else if (productList.status == 502) {
+      change(null, status: RxStatus.error());
+      smallSnackbar(
+          text: "Server is not responding | Status ${productList.status}");
+    } else {
+      change(null, status: RxStatus.error());
+      smallSnackbar(text: "Product fetch error | Status ${productList.status}");
+    }
   }
-
-  void increment() => count.value++;
 }

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
-import 'customText.dart';
+import 'custom_text.dart';
+
 
 AppBar customAppBar(
     {required String text,

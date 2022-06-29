@@ -1,10 +1,12 @@
 import 'dart:developer';
 
-import '../../../components/enums.dart';
-import '../models/menu_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:get/get.dart';
+
+import '../../../components/enums.dart';
+import '../../../constants/colors.dart';
+import '../models/menu_item_model.dart';
 
 class MainDrawerController extends GetxController {
   //* Controllers
@@ -59,7 +61,6 @@ class MainDrawerController extends GetxController {
     ),
   ];
 
-
   //* Mehtods ------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   //* Toggle Drawer
   void toggleDrawer() {
@@ -67,8 +68,21 @@ class MainDrawerController extends GetxController {
     zoomDrawerController.toggle?.call();
     update();
   }
-  void onPressTileItem(MyMenuItem myMenuItem){
-    log(myMenuItem.toString());
 
+  void logout() {
+    Get.dialog(AlertDialog(
+      backgroundColor: BLACK_COLOR.withOpacity(0.8),
+      title: Text("Log Out"),
+    ));
+  }
+
+  void onPressTileItem(MyMenuItem myMenuItem) {
+    log(myMenuItem.toString());
+    switch (myMenuItem) {
+      case MyMenuItem.logout:
+        logout();
+        break;
+      default:
+    }
   }
 }

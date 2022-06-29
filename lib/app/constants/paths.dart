@@ -10,4 +10,7 @@ const FORGET_PASSWORD_API_URL =
 const GET_USER_DATA_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/users/getUserData";
 
+const GET_PRODUCT_LIST_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/products/getList";
+
 const ACCESS_TOKEN = "accessToken";

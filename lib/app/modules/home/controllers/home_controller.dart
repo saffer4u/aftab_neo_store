@@ -44,6 +44,6 @@ class HomeController extends GetxController {
   ];*/
 
   void onTapHomeGridItem(int id) {
-    Get.toNamed(Routes.PRODUCT_LIST);
+    Get.toNamed(Routes.PRODUCT_LIST, arguments: id);
   }
 }
