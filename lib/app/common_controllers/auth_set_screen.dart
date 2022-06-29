@@ -1,10 +1,10 @@
 import 'dart:developer';
 
-import 'package:aftab_neo_store/app/components/snackbars/small_snackbar.dart';
-import 'package:aftab_neo_store/app/constants/colors.dart';
-import 'package:aftab_neo_store/app/constants/paths.dart';
-import 'package:aftab_neo_store/app/modules/drawer/models/fetch_user_data_model.dart';
-import 'package:aftab_neo_store/app/modules/drawer/repositories/user_data_provider.dart';
+import '../components/snackbars/small_snackbar.dart';
+import '../constants/colors.dart';
+import '../constants/paths.dart';
+import '../modules/drawer/models/fetch_user_data_model.dart';
+import '../modules/drawer/repositories/user_data_provider.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

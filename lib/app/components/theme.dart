@@ -34,6 +34,12 @@ final ThemeData appThemeData = ThemeData(
       color: WHITE_COLOR,
       fontSize: 12,
     ),
+    headline6: TextStyle(
+      fontFamily: Font.Gotham,
+      color: WHITE_COLOR,
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    ),
   ),
   colorScheme: ColorScheme.fromSwatch().copyWith(
     secondary: WHITE_COLOR,

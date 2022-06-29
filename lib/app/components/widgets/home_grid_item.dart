@@ -4,6 +4,9 @@ import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
 import '../enums.dart';
 
+
+
+// * Not in user but can be used if there are icon and text in a grid.
 class HomeGridItem extends StatelessWidget {
   final IconData? icon;
   final String title;

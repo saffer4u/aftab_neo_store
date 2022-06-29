@@ -1,8 +1,6 @@
-import '../../../components/enums.dart';
-import '../models/home_grid_item_model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+
+import '../../../routes/app_pages.dart';
 
 class HomeController extends GetxController {
   var activeIndex = 0.obs;
@@ -16,6 +14,8 @@ class HomeController extends GetxController {
   ];
 
   //* List of home grid items
+  //* Not in use showing categories from API
+  /*
   final List<HomeGridItemModel> homeGridItems = [
     HomeGridItemModel(
       icon: Icons.table_restaurant_outlined,
@@ -41,5 +41,9 @@ class HomeController extends GetxController {
       iconPosition: Position.bottomRight,
       icon: Icons.directions_boat_rounded,
     ),
-  ];
+  ];*/
+
+  void onTapHomeGridItem(int id) {
+    Get.toNamed(Routes.PRODUCT_LIST);
+  }
 }

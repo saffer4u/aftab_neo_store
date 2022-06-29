@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:aftab_neo_store/app/constants/paths.dart';
+import '../../../constants/paths.dart';
 import 'package:aftab_neo_store/app/modules/drawer/models/fetch_user_data_model.dart';
 import 'package:get/get.dart';
 

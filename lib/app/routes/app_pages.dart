@@ -5,6 +5,8 @@ import '../modules/authentication/views/authentication_view.dart';
 import '../modules/drawer/bindings/drawer_binding.dart';
 import '../modules/drawer/views/drawer_view.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/product_list/bindings/product_list_binding.dart';
+import '../modules/product_list/views/product_list_view.dart';
 
 part 'app_routes.dart';
 
@@ -22,12 +24,16 @@ class AppPages {
     GetPage(
       name: _Paths.HOME,
       page: () => const HomeView(),
-     
     ),
     GetPage(
       name: _Paths.DRAWER,
       page: () => const DrawerView(),
       binding: DrawerBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_LIST,
+      page: () => const ProductListView(),
+      binding: ProductListBinding(),
     ),
   ];
 }

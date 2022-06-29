@@ -1,4 +1,4 @@
-import 'package:aftab_neo_store/app/modules/home/controllers/home_controller.dart';
+import '../../home/controllers/home_controller.dart';
 import 'package:get/get.dart';
 
 import '../controllers/drawer_controller.dart';
