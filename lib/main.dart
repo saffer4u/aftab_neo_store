@@ -1,3 +1,4 @@
+import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +14,9 @@ void main() {
 
   //* Set screen on the basis of user state defined in this controller
   Get.put(AuthSetScreenController());
+
+  //* Common controller for global methods
+  Get.put<GlobalController>(GlobalController());
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,

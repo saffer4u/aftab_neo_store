@@ -6,10 +6,17 @@ class CustomButton extends StatelessWidget {
   final Color backgroundColor;
   final Color textColor;
 
+  final double horizontalPadding;
+  final double verticalPadding;
+
+
   final void Function()? navigation;
 
   final String text;
   CustomButton({
+
+    this.verticalPadding = 0,
+    this.horizontalPadding = 30.0,
     this.navigation,
     required this.text,
     required this.textColor,
@@ -22,7 +29,8 @@ class CustomButton extends StatelessWidget {
     return InkWell(
       onTap: navigation,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding, vertical: verticalPadding),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           decoration: BoxDecoration(

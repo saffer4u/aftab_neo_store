@@ -1,3 +1,4 @@
+import 'package:aftab_neo_store/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import '../../../components/snackbars/small_snackbar.dart';
@@ -37,5 +38,13 @@ class ProductListController extends GetxController with StateMixin<dynamic> {
       change(null, status: RxStatus.error());
       smallSnackbar(text: "Product fetch error | Status ${productList.status}");
     }
+  }
+
+  void onPressedProductTile(
+      {required int productId, required int productIndex}) {
+    Get.toNamed(Routes.PRODUCT_DETAIL, arguments: {
+      "productId": productId,
+      "productIndex": productIndex,
+    });
   }
 }

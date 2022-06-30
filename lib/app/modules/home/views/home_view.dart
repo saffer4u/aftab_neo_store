@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
 import 'package:aftab_neo_store/app/modules/drawer/controllers/drawer_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     // * Get fetched categories form API
     final productCategories =
-        Get.find<AuthSetScreenController>().userData.data!.productCategories!;
+        Get.find<GlobalController>().userData.data!.productCategories!;
     return Scaffold(
       appBar: customAppBar(
         text: "NeoSTORE",
@@ -51,23 +52,7 @@ class HomeView extends GetView<HomeController> {
                     fit: BoxFit.cover,
                     height: double.infinity,
                     width: double.infinity,
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Container(
-                        color: GREY_COLOR.withOpacity(0.5),
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            backgroundColor: RED_COLOR700,
-                            color: BLACK_COLOR,
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                                : null,
-                          ),
-                        ),
-                      );
-                    },
+                    loadingBuilder: Get.find<GlobalController>().loadingBuilder,
                   );
                 },
                 options: CarouselOptions(

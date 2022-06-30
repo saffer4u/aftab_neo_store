@@ -1,9 +1,13 @@
 import 'dart:developer';
 
+import 'package:aftab_neo_store/app/common_controllers/auth_set_screen.dart';
+import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
+import 'package:aftab_neo_store/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:get/get.dart';
 
+import '../../../components/alert_boxes/simple_alert_dialog.dart';
 import '../../../components/enums.dart';
 import '../../../constants/colors.dart';
 import '../models/menu_item_model.dart';
@@ -69,20 +73,59 @@ class MainDrawerController extends GetxController {
     update();
   }
 
-  void logout() {
-    Get.dialog(AlertDialog(
-      backgroundColor: BLACK_COLOR.withOpacity(0.8),
-      title: Text("Log Out"),
-    ));
-  }
-
+  //* Navigation form drawer menu tile
   void onPressTileItem(MyMenuItem myMenuItem) {
     log(myMenuItem.toString());
     switch (myMenuItem) {
       case MyMenuItem.logout:
         logout();
         break;
+      case MyMenuItem.tables:
+        Get.toNamed(Routes.PRODUCT_LIST, arguments: getCategoryIndex("Table"));
+        break;
       default:
     }
+  }
+
+  //* Get product category index by product title.
+  int getCategoryIndex(String name) {
+    int i;
+    for (i = 0;
+        i <
+            Get.find<GlobalController>()
+                .userData
+                .data!
+                .productCategories!
+                .length;
+        i++) {
+      if (Get.find<GlobalController>()
+              .userData
+              .data!
+              .productCategories![i]!
+              .name ==
+          name) {
+        i = Get.find<GlobalController>()
+            .userData
+            .data!
+            .productCategories![i]!
+            .id!;
+        break;
+      }
+    }
+    return i;
+  }
+
+  void logout() {
+    Get.dialog(
+      SimpleAlertDialog(
+        title: "Log Out",
+        bodyText: "Are you sure?",
+        popButtonText: "Cancel",
+        okText: "Ok",
+        onPressedOk: () {
+          Get.find<AuthSetScreenController>().setToken(null);
+        },
+      ),
+    );
   }
 }

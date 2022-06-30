@@ -13,4 +13,7 @@ const GET_USER_DATA_API_URL =
 const GET_PRODUCT_LIST_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/products/getList";
 
+const GET_PRODUCT_DETAILS_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/products/getDetail";
+
 const ACCESS_TOKEN = "accessToken";

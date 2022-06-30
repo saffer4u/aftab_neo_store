@@ -1,7 +1,7 @@
+import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../common_controllers/auth_set_screen.dart';
 import '../../../components/progress_indicaters/on_loading.dart';
 import '../../../components/widgets/appbar.dart';
 import '../../../components/widgets/custom_text.dart';
@@ -18,7 +18,7 @@ class ProductListView extends GetView<ProductListController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-          text: Get.find<AuthSetScreenController>()
+          text: Get.find<GlobalController>()
               .userData
               .data!
               .productCategories![controller.categoryId - 1]!
@@ -27,6 +27,7 @@ class ProductListView extends GetView<ProductListController> {
         (state) {
           final products = state as ProductsListModel;
           return ListView.separated(
+            physics: BouncingScrollPhysics(),
             itemCount: products.data!.length,
             separatorBuilder: (_, index) {
               return Divider(
@@ -35,9 +36,10 @@ class ProductListView extends GetView<ProductListController> {
             },
             itemBuilder: (_, index) {
               return InkWell(
-                onTap: () {
-                  // Get.toNamed(Routes.PRODUCT_DETAILED);
-                },
+                onTap: () => controller.onPressedProductTile(
+                  productId: products.data![index].id!,
+                  productIndex: index,
+                ),
                 child: Card(
                   child: Row(
                     children: [

@@ -1,9 +1,11 @@
 import 'dart:developer';
 
+import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
+import 'package:aftab_neo_store/app/components/widgets/on_error.dart';
+
 import '../components/snackbars/small_snackbar.dart';
 import '../constants/colors.dart';
 import '../constants/paths.dart';
-import '../modules/drawer/models/fetch_user_data_model.dart';
 import '../modules/drawer/repositories/user_data_provider.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,7 +13,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../routes/app_pages.dart';
 
 class AuthSetScreenController extends GetxController {
-  FetchUserDataModel userData = FetchUserDataModel();
   Rx<String?> _accessToken = Rx(null);
   @override
   void onInit() async {
@@ -25,12 +26,19 @@ class AuthSetScreenController extends GetxController {
       log("User logged out");
       Get.offAllNamed(Routes.AUTHENTICATION);
     } else {
-      userData = await UserDataProvider().getUserData();
+      Get.find<GlobalController>().userData = await UserDataProvider().getUserData();
 
-      if (userData.status == 200) {
+      if (Get.find<GlobalController>().userData.status == 200) {
         Get.offAllNamed(Routes.DRAWER);
       } else {
-        //TODO : Implement user data fetch error page
+        Get.to(() => OnError(
+              onRefresh: ()  {
+                // userData = await UserDataProvider().getUserData();
+
+              },
+              errText:
+                  "Something went wrong...\nPlease check your internet connection",
+            ));
         smallSnackbar(
           text: "User Data fetch error please restart the application",
           textColor: WHITE_COLOR,

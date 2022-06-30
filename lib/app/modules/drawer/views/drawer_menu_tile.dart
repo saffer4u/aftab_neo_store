@@ -1,3 +1,4 @@
+import '../../../common_controllers/global_controller.dart';
 import '../controllers/drawer_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,7 +23,6 @@ class DrawerMenuTile extends GetView<MainDrawerController> {
       itemBuilder: (_, index) {
         return ListTile(
           hoverColor: RED_COLOR700.withOpacity(0.8),
-          
           contentPadding: EdgeInsets.symmetric(
             vertical: 5,
             horizontal: 10,
@@ -42,14 +42,13 @@ class DrawerMenuTile extends GetView<MainDrawerController> {
             //* Show no. of items in cart as red bubble
             if (controller.drawerMenuItems[index].menuItem ==
                     MyMenuItem.myCart &&
-                Get.find<AuthSetScreenController>().userData.data!.totalCarts !=
-                    0) {
+                Get.find<GlobalController>().userData.data!.totalCarts != 0) {
               return CircleAvatar(
                 radius: 18,
                 backgroundColor: RED_COLOR800,
                 child: FittedBox(
                   child: Text(
-                    Get.find<AuthSetScreenController>()
+                    Get.find<GlobalController>()
                         .userData
                         .data!
                         .totalCarts
@@ -63,14 +62,13 @@ class DrawerMenuTile extends GetView<MainDrawerController> {
             //* Show no. of items in my Orders as red bubble
             if (controller.drawerMenuItems[index].menuItem ==
                     MyMenuItem.myOrder &&
-                Get.find<AuthSetScreenController>().userData.data!.totalCarts !=
-                    0) {
+                Get.find<GlobalController>().userData.data!.totalCarts != 0) {
               return CircleAvatar(
                 radius: 18,
                 backgroundColor: RED_COLOR800,
                 child: FittedBox(
                   child: Text(
-                    Get.find<AuthSetScreenController>()
+                    Get.find<GlobalController>()
                         .userData
                         .data!
                         .totalOrders

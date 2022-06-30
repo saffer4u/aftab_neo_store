@@ -1,10 +1,11 @@
+import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common_controllers/auth_set_screen.dart';
 import '../../constants/colors.dart';
 
-class DrawerUserInfoTile extends GetView<AuthSetScreenController> {
+class DrawerUserInfoTile extends GetView<GlobalController> {
   // final userData = controller.userData;
   DrawerUserInfoTile({
     Key? key,
