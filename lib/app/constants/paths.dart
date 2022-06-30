@@ -18,4 +18,7 @@ const GET_PRODUCT_DETAILS_API_URL =
 const SET_RATING_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/products/setRating";
 
+const ADD_TO_CART_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/addToCart";
+
 const ACCESS_TOKEN = "accessToken";

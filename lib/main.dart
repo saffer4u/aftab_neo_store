@@ -1,8 +1,8 @@
-import 'app/common_controllers/global_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app/common_controllers/auth_set_screen.dart';
+import 'app/common_controllers/global_controller.dart';
 import 'app/components/progress_indicaters/app_loading.dart';
 import 'app/components/theme.dart';
 import 'app/components/widgets/background_image.dart';
@@ -16,6 +16,7 @@ void main() {
   Get.put(AuthSetScreenController());
 
   //* Common controller for global methods
+  //* - Get user data from any Screen
   Get.put<GlobalController>(GlobalController());
   runApp(
     GetMaterialApp(

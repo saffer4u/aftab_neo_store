@@ -1,19 +1,18 @@
-import '../../../common_controllers/global_controller.dart';
-import '../../../components/widgets/appbar.dart';
-import '../../../constants/colors.dart';
-import '../../../constants/fonts.dart';
-import 'package:aftab_neo_store/app/modules/product_detail/models/product_details_model.dart';
-import 'package:aftab_neo_store/app/modules/product_list/controllers/product_list_controller.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
+import '../../../common_controllers/global_controller.dart';
 import '../../../components/progress_indicaters/on_loading.dart';
+import '../../../components/widgets/appbar.dart';
 import '../../../components/widgets/customButton.dart';
 import '../../../components/widgets/custom_text.dart';
 import '../../../components/widgets/on_error.dart';
 import '../../../components/widgets/rating.dart';
+import '../../../constants/colors.dart';
+import '../../../constants/fonts.dart';
+import '../../product_list/controllers/product_list_controller.dart';
 import '../controllers/product_detail_controller.dart';
+import '../models/product_details_model.dart';
 
 class ProductDetailView extends GetView<ProductDetailController> {
   const ProductDetailView({Key? key}) : super(key: key);
@@ -209,6 +208,7 @@ class ProductDetailView extends GetView<ProductDetailController> {
                     children: [
                       Expanded(
                         child: CustomButton(
+                          navigation: controller.buyNow,
                             verticalPadding: 5,
                             horizontalPadding: 5,
                             text: "BUY NOW",
@@ -217,8 +217,8 @@ class ProductDetailView extends GetView<ProductDetailController> {
                       ),
                       Expanded(
                         child: CustomButton(
-                            navigation: () =>
-                                controller.rating(),
+                            navigation: 
+                                controller.rating,
                             verticalPadding: 5,
                             horizontalPadding: 5,
                             text: "RATE",
