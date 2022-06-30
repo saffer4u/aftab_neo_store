@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
-import 'package:aftab_neo_store/app/modules/drawer/controllers/drawer_controller.dart';
+import '../../../common_controllers/global_controller.dart';
+import '../../drawer/controllers/drawer_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

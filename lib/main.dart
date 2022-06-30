@@ -1,4 +1,4 @@
-import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
+import 'app/common_controllers/global_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

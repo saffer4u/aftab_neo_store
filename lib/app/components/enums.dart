@@ -21,7 +21,7 @@ enum MyMenuItem{
   tables,
   sofas,
   chair,
-  cups,
+  beds,
   myAccount,
   storeLocator,
   myOrder,

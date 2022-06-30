@@ -1,15 +1,14 @@
 import 'dart:developer';
 
-import 'package:aftab_neo_store/app/common_controllers/auth_set_screen.dart';
-import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
-import 'package:aftab_neo_store/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:get/get.dart';
 
-import '../../../components/alert_boxes/simple_alert_dialog.dart';
+import '../../../common_controllers/auth_set_screen.dart';
+import '../../../common_controllers/global_controller.dart';
+import '../../../components/dialog_boxes/simple_alert_dialog.dart';
 import '../../../components/enums.dart';
-import '../../../constants/colors.dart';
+import '../../../routes/app_pages.dart';
 import '../models/menu_item_model.dart';
 
 class MainDrawerController extends GetxController {
@@ -39,9 +38,9 @@ class MainDrawerController extends GetxController {
       menuItem: MyMenuItem.chair,
     ),
     MenuItemModel(
-      title: "Cupboards",
+      title: "Beds",
       icon: Icons.coffee,
-      menuItem: MyMenuItem.cups,
+      menuItem: MyMenuItem.beds,
     ),
     MenuItemModel(
       title: "My Account",
@@ -83,32 +82,28 @@ class MainDrawerController extends GetxController {
       case MyMenuItem.tables:
         Get.toNamed(Routes.PRODUCT_LIST, arguments: getCategoryIndex("Table"));
         break;
+      case MyMenuItem.sofas:
+        Get.toNamed(Routes.PRODUCT_LIST, arguments: getCategoryIndex("Sofa"));
+        break;
+      case MyMenuItem.chair:
+        Get.toNamed(Routes.PRODUCT_LIST, arguments: getCategoryIndex("Chairs"));
+        break;
+      case MyMenuItem.beds:
+        Get.toNamed(Routes.PRODUCT_LIST, arguments: getCategoryIndex("Beds"));
+        break;
       default:
     }
   }
 
+
   //* Get product category index by product title.
   int getCategoryIndex(String name) {
+    final productCategories =
+        Get.find<GlobalController>().userData.data!.productCategories;
     int i;
-    for (i = 0;
-        i <
-            Get.find<GlobalController>()
-                .userData
-                .data!
-                .productCategories!
-                .length;
-        i++) {
-      if (Get.find<GlobalController>()
-              .userData
-              .data!
-              .productCategories![i]!
-              .name ==
-          name) {
-        i = Get.find<GlobalController>()
-            .userData
-            .data!
-            .productCategories![i]!
-            .id!;
+    for (i = 0; i < productCategories!.length; i++) {
+      if (productCategories[i]!.name == name) {
+        i = productCategories[i]!.id!;
         break;
       }
     }

@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class Rating extends StatelessWidget {
   final double iconSize;
+  final void Function(double)? onRatingUpdate;
   Rating({
     Key? key,
+    this.onRatingUpdate,
     required this.iconSize,
     required this.rating,
   }) : super(key: key);
@@ -25,8 +29,10 @@ class Rating extends StatelessWidget {
               Icons.star,
               color: Colors.amber,
             ),
-        onRatingUpdate: (rating) {
-          print(rating);
-        });
+        onRatingUpdate: onRatingUpdate == null
+            ? (rating) {
+                log(rating.toString());
+              }
+            : onRatingUpdate!);
   }
 }

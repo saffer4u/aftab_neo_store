@@ -1,4 +1,3 @@
-import 'package:aftab_neo_store/app/modules/product_list/views/product_list_view.dart';
 import 'package:get/get.dart';
 
 import '../controllers/product_list_controller.dart';

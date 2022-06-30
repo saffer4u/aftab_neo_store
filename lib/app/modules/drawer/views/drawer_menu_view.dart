@@ -1,8 +1,8 @@
 import '../../../common_controllers/auth_set_screen.dart';
-import 'package:aftab_neo_store/app/components/enums.dart';
-import 'package:aftab_neo_store/app/modules/drawer/views/drawer_menu_tile.dart';
-import 'package:aftab_neo_store/app/constants/colors.dart';
-import 'package:aftab_neo_store/app/modules/drawer/controllers/drawer_controller.dart';
+import '../../../components/enums.dart';
+import 'drawer_menu_tile.dart';
+import '../../../constants/colors.dart';
+import '../controllers/drawer_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

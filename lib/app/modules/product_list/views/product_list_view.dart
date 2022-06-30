@@ -1,4 +1,4 @@
-import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
+import '../../../common_controllers/global_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -49,6 +49,7 @@ class ProductListView extends GetView<ProductListController> {
                           child: Image.network(
                             products.data![index].productImages!,
                             fit: BoxFit.cover,
+                            loadingBuilder: Get.find<GlobalController>().loadingBuilder,
                           ),
                           height: 100,
                           width: 120,

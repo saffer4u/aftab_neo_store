@@ -1,8 +1,7 @@
-import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../common_controllers/auth_set_screen.dart';
+import '../../common_controllers/global_controller.dart';
 import '../../constants/colors.dart';
 
 class DrawerUserInfoTile extends GetView<GlobalController> {

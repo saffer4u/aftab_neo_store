@@ -1,16 +1,15 @@
 import 'dart:developer';
 
-import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
-import 'package:aftab_neo_store/app/components/widgets/on_error.dart';
-
-import '../components/snackbars/small_snackbar.dart';
-import '../constants/colors.dart';
-import '../constants/paths.dart';
-import '../modules/drawer/repositories/user_data_provider.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../components/snackbars/small_snackbar.dart';
+import '../components/widgets/on_error.dart';
+import '../constants/colors.dart';
+import '../constants/paths.dart';
+import '../modules/drawer/repositories/user_data_provider.dart';
 import '../routes/app_pages.dart';
+import 'global_controller.dart';
 
 class AuthSetScreenController extends GetxController {
   Rx<String?> _accessToken = Rx(null);

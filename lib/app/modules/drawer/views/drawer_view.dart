@@ -1,7 +1,7 @@
-import 'package:aftab_neo_store/app/constants/colors.dart';
-import 'package:aftab_neo_store/app/modules/drawer/controllers/drawer_controller.dart';
-import 'package:aftab_neo_store/app/modules/drawer/views/drawer_menu_view.dart';
-import 'package:aftab_neo_store/app/modules/home/views/home_view.dart';
+import '../../../constants/colors.dart';
+import '../controllers/drawer_controller.dart';
+import 'drawer_menu_view.dart';
+import '../../home/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';

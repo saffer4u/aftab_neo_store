@@ -1,11 +1,10 @@
-import '../../../common_controllers/global_controller.dart';
-import '../controllers/drawer_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../common_controllers/auth_set_screen.dart';
-import '../../../constants/colors.dart';
+import '../../../common_controllers/global_controller.dart';
 import '../../../components/enums.dart';
+import '../../../constants/colors.dart';
+import '../controllers/drawer_controller.dart';
 
 class DrawerMenuTile extends GetView<MainDrawerController> {
   const DrawerMenuTile({Key? key}) : super(key: key);

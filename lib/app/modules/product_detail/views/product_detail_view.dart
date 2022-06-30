@@ -1,10 +1,7 @@
-import 'dart:developer';
-
-import 'package:aftab_neo_store/app/common_controllers/auth_set_screen.dart';
-import 'package:aftab_neo_store/app/common_controllers/global_controller.dart';
-import 'package:aftab_neo_store/app/components/widgets/appbar.dart';
-import 'package:aftab_neo_store/app/constants/colors.dart';
-import 'package:aftab_neo_store/app/constants/fonts.dart';
+import '../../../common_controllers/global_controller.dart';
+import '../../../components/widgets/appbar.dart';
+import '../../../constants/colors.dart';
+import '../../../constants/fonts.dart';
 import 'package:aftab_neo_store/app/modules/product_detail/models/product_details_model.dart';
 import 'package:aftab_neo_store/app/modules/product_list/controllers/product_list_controller.dart';
 import 'package:flutter/material.dart';
@@ -220,6 +217,8 @@ class ProductDetailView extends GetView<ProductDetailController> {
                       ),
                       Expanded(
                         child: CustomButton(
+                            navigation: () =>
+                                controller.rating(),
                             verticalPadding: 5,
                             horizontalPadding: 5,
                             text: "RATE",

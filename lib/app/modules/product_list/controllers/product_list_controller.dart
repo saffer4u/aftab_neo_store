@@ -1,4 +1,4 @@
-import 'package:aftab_neo_store/app/routes/app_pages.dart';
+import '../../../routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import '../../../components/snackbars/small_snackbar.dart';

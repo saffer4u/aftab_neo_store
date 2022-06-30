@@ -1,10 +1,10 @@
 import 'dart:developer';
 
-import '../../../constants/paths.dart';
-import 'package:aftab_neo_store/app/modules/drawer/models/fetch_user_data_model.dart';
 import 'package:get/get.dart';
 
 import '../../../common_controllers/auth_set_screen.dart';
+import '../../../constants/paths.dart';
+import '../models/fetch_user_data_model.dart';
 
 class UserDataProvider extends GetConnect {
   Future<FetchUserDataModel> getUserData() async {
