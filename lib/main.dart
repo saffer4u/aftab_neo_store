@@ -9,6 +9,8 @@ import 'app/components/widgets/background_image.dart';
 import 'app/constants/colors.dart';
 import 'app/routes/app_pages.dart';
 
+//TODO : Update Drawer tile of cart item when item added/deleted from cart.
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 

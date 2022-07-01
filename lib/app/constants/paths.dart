@@ -27,4 +27,7 @@ const LIST_CART_ITEMS_API_URL =
 const EDIT_CART_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/editCart";
 
+const DELETE_CART_ITEM_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/deleteCart";
+
 const ACCESS_TOKEN = "accessToken";

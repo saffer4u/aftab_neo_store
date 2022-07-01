@@ -5,8 +5,10 @@ import 'package:get/get.dart';
 import '../../../common_controllers/global_controller.dart';
 import '../../../components/progress_indicaters/on_loading.dart';
 import '../../../components/widgets/appbar.dart';
+import '../../../components/widgets/customButton.dart';
 import '../../../components/widgets/on_error.dart';
 import '../../../constants/colors.dart';
+import '../../../constants/fonts.dart';
 import '../controllers/cart_controller.dart';
 import '../models/cart_item_response_model.dart';
 
@@ -26,27 +28,54 @@ class CartView extends GetView<CartController> {
               if (index == data.data!.length) {
                 //* Total list tile
                 return Container(
-                  color: Colors.red,
-                  height: 200,
-                  width: 200,
+                  color: WHITE_COLOR,
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  height: 120,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "TOTAL",
+                        style: Get.theme.textTheme.headline1!.copyWith(
+                          color: BLACK_COLOR,
+                          fontSize: 25,
+                        ),
+                      ),
+                      //  SizedBox(width: 150),
+                      Text(
+                        "₹ ${data.total}",
+                        style: Get.theme.textTheme.headline6!.copyWith(
+                          color: BLACK_COLOR,
+                          fontSize: 25,
+                          fontFamily: Font.GothamBold,
+                        ),
+                      ),
+                    ],
+                  ),
                 );
               } else if (index == data.data!.length + 1) {
                 //* Order now button
                 return Container(
-                  height: 200,
-                  color: Colors.black,
+                  color: WHITE_COLOR,
+                  height: 120,
+                  child: CustomButton(
+                    navigation: () => controller.orderNow(),
+                    backgroundColor: RED_COLOR700,
+                    text: "ORDER NOW",
+                    textColor: WHITE_COLOR,
+                    verticalPadding: 30,
+                  ),
                 );
               } else {
                 return Slidable(
-                  key: const ValueKey(0),
-
-                  // The end action pane is the one at the right or the bottom side.
                   endActionPane: ActionPane(
                     extentRatio: 0.2,
                     motion: ScrollMotion(),
                     children: [
                       SlidableAction(
-                        onPressed: (context) {},
+                        onPressed: (context) => controller.deleteItem(
+                          productId: data.data![index].productId!,
+                        ),
                         backgroundColor: WHITE_COLOR,
                         foregroundColor: RED_COLOR700,
                         icon: Icons.delete,
@@ -54,7 +83,6 @@ class CartView extends GetView<CartController> {
                       ),
                     ],
                   ),
-
                   child: Container(
                     color: WHITE_COLOR,
                     child: Row(
@@ -89,30 +117,43 @@ class CartView extends GetView<CartController> {
                                 style: Get.theme.textTheme.headline3!
                                     .copyWith(color: GREY_COLOR),
                               ),
-                              DropdownButton<String>(
-                                focusColor: RED_COLOR700,
-                                value: data.data![index].quantity.toString(),
+                              Row(
+                                children: [
+                                  DropdownButton<String>(
+                                    focusColor: RED_COLOR700,
+                                    value:
+                                        data.data![index].quantity.toString(),
 
-                                //elevation: 5,
-                                style: TextStyle(color: GREY_COLOR,),
-                                iconEnabledColor: BLACK_COLOR,
-                                items: controller.quantityList
-                                    .map<DropdownMenuItem<String>>(
-                                        (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style: TextStyle(color: Colors.black),
+                                    //elevation: 5,
+                                    style: TextStyle(
+                                      color: GREY_COLOR,
                                     ),
-                                  );
-                                }).toList(),
+                                    iconEnabledColor: BLACK_COLOR,
+                                    items: controller.quantityList
+                                        .map<DropdownMenuItem<String>>(
+                                            (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(
+                                          value,
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                      );
+                                    }).toList(),
 
-                                onChanged: (newValue) =>
-                                    controller.onSelectDropDownButton(
-                                  selectedQuantity: newValue!,
-                                  productId: data.data![index].id!,
-                                ),
+                                    onChanged: (newValue) =>
+                                        controller.onSelectDropDownButton(
+                                      selectedQuantity: newValue!,
+                                      productId: data.data![index].productId!,
+                                    ),
+                                  ),
+                                  SizedBox(width: 150),
+                                  Text(
+                                    "₹ ${data.data![index].product!.cost}",
+                                    style: Get.theme.textTheme.headline6!
+                                        .copyWith(color: BLACK_COLOR),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -131,6 +172,12 @@ class CartView extends GetView<CartController> {
         onError: (_) => OnError(
           errText: "Something went wrong",
           onRefresh: controller.fetchCartProducts,
+        ),
+        onEmpty: Center(
+          child: Text(
+            "Cart is empty",
+            style: Get.theme.textTheme.headline6!.copyWith(color: BLACK_COLOR),
+          ),
         ),
       ),
     );
