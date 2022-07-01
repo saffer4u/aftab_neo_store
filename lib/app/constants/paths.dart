@@ -21,4 +21,10 @@ const SET_RATING_API_URL =
 const ADD_TO_CART_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/addToCart";
 
+const LIST_CART_ITEMS_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/cart";
+
+const EDIT_CART_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/editCart";
+
 const ACCESS_TOKEN = "accessToken";

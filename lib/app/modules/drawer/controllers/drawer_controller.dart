@@ -76,6 +76,9 @@ class MainDrawerController extends GetxController {
   void onPressTileItem(MyMenuItem myMenuItem) {
     log(myMenuItem.toString());
     switch (myMenuItem) {
+      case MyMenuItem.myCart:
+        Get.toNamed(Routes.CART);
+        break;
       case MyMenuItem.logout:
         logout();
         break;
@@ -94,7 +97,6 @@ class MainDrawerController extends GetxController {
       default:
     }
   }
-
 
   //* Get product category index by product title.
   int getCategoryIndex(String name) {

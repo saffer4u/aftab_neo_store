@@ -57,11 +57,11 @@ class DrawerMenuTile extends GetView<MainDrawerController> {
                 ),
               );
             }
-
+           
             //* Show no. of items in my Orders as red bubble
             if (controller.drawerMenuItems[index].menuItem ==
                     MyMenuItem.myOrder &&
-                Get.find<GlobalController>().userData.data!.totalCarts != 0) {
+                Get.find<GlobalController>().userData.data!.totalOrders != 0) {
               return CircleAvatar(
                 radius: 18,
                 backgroundColor: RED_COLOR800,

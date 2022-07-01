@@ -1,15 +1,14 @@
 import 'dart:developer';
 
-import '../../../common_controllers/global_controller.dart';
-import '../../drawer/controllers/drawer_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../common_controllers/auth_set_screen.dart';
+import '../../../common_controllers/global_controller.dart';
 import '../../../components/widgets/appbar.dart';
 import '../../../constants/colors.dart';
+import '../../drawer/controllers/drawer_controller.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -25,9 +24,9 @@ class HomeView extends GetView<HomeController> {
         size: 16,
         action: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: Icon(Icons.search),
             onPressed: () async {
-              log("Logout button pressed");
+              log("Search button pressed");
               // await Get.find<AuthSetScreenController>().setToken(null);
             },
           )
