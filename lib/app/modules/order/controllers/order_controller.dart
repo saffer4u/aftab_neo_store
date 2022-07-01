@@ -5,6 +5,7 @@ import '../../../components/dialog_boxes/simple_alert_dialog.dart';
 import '../../../components/snackbars/small_snackbar.dart';
 import '../../../constants/colors.dart';
 import '../../cart/controllers/cart_controller.dart';
+import '../models/order_list_response_model.dart';
 import '../repositories/order_provider.dart';
 
 class OrderController extends GetxController with StateMixin<dynamic> {
@@ -57,11 +58,35 @@ class OrderController extends GetxController with StateMixin<dynamic> {
 
   //* Other methods ----------->>>>>>>>>>>>>>>>
   @override
-  void onInit() {
-    change(null, status: RxStatus.success());
+  void onInit() async {
+    bool? isPushedForOrderList = Get.arguments;
+
+    //* Get order items only called when order page pushed with true argument
+    if (isPushedForOrderList != null) {
+      await getOrderedItems();
+    } else {
+      change(null, status: RxStatus.success());
+    }
+
     super.onInit();
   }
 
+  //* List orderd items
+  Future<void> getOrderedItems() async {
+    change(null, status: RxStatus.loading());
+    OrderListResponseModel orderList = await OrderProvider().getOrderList();
+    if (orderList.status == 200) {
+      if (orderList.data == null) {
+        change(null, status: RxStatus.empty());
+      } else {
+        change(orderList, status: RxStatus.success());
+      }
+    } else {
+      change(null, status: RxStatus.error());
+    }
+  }
+
+  // * Place order from the cart items
   void placeOrder() {
     if (addressFormKey.currentState!.validate()) {
       Get.dialog(

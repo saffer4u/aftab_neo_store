@@ -95,7 +95,7 @@ class MainDrawerController extends GetxController {
         Get.toNamed(Routes.PRODUCT_LIST, arguments: getCategoryIndex("Beds"));
         break;
       case MyMenuItem.myOrder:
-        Get.toNamed(Routes.ORDER_LIST);
+        Get.toNamed(Routes.ORDER_LIST,arguments: true);
         break;
       default:
     }
