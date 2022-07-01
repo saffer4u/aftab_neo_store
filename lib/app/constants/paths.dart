@@ -1,4 +1,7 @@
 const BACKGROUND_IMAGE_PATH = "assets/images/background.png";
+
+
+//* API urls : 
 const REGISTER_NEW_USER_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/users/register";
 
@@ -29,5 +32,8 @@ const EDIT_CART_API_URL =
 
 const DELETE_CART_ITEM_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/deleteCart";
+
+const PLACE_ORDER_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/order";
 
 const ACCESS_TOKEN = "accessToken";

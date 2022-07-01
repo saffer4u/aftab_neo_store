@@ -109,7 +109,7 @@ class CartView extends GetView<CartController> {
                               Text(
                                 data.data![index].product!.name!,
                                 style: Get.theme.textTheme.headline6!
-                                    .copyWith(color: BLACK_COLOR),
+                                    .copyWith(color: BLACK_COLOR, fontSize: 15),
                               ),
                               SizedBox(height: 10),
                               Text(
@@ -147,11 +147,12 @@ class CartView extends GetView<CartController> {
                                       productId: data.data![index].productId!,
                                     ),
                                   ),
-                                  SizedBox(width: 150),
+                                  SizedBox(width: 100),
                                   Text(
                                     "₹ ${data.data![index].product!.cost}",
                                     style: Get.theme.textTheme.headline6!
-                                        .copyWith(color: BLACK_COLOR),
+                                        .copyWith(
+                                            color: BLACK_COLOR, fontSize: 15),
                                   ),
                                 ],
                               ),
