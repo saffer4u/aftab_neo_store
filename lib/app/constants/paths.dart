@@ -40,5 +40,7 @@ const GET_ORDER_LIST_API_URL =
 
 const GET_ORDER_DETAILS_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/orderDetail";
+const CHANGE_PASSWORD_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/users/change";
 
 const ACCESS_TOKEN = "accessToken";

@@ -12,6 +12,7 @@ abstract class Routes {
   static const CART = _Paths.CART;
   static const ORDER_NOW = _Paths.ORDER_NOW;
   static const ORDER_LIST = _Paths.ORDER_LIST;
+  static const MY_ACCOUNT = _Paths.MY_ACCOUNT;
 }
 
 abstract class _Paths {
@@ -24,4 +25,5 @@ abstract class _Paths {
   static const CART = '/cart';
   static const ORDER_NOW = '/order-now';
   static const ORDER_LIST = "/order-list";
+  static const MY_ACCOUNT = '/my-account';
 }

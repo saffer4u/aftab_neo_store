@@ -7,6 +7,8 @@ import '../modules/cart/views/cart_view.dart';
 import '../modules/drawer/bindings/drawer_binding.dart';
 import '../modules/drawer/views/drawer_view.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/my_account/bindings/my_account_binding.dart';
+import '../modules/my_account/views/my_account_view.dart';
 import '../modules/order/bindings/order_binding.dart';
 import '../modules/order/views/order_list_view.dart';
 import '../modules/order/views/order_now_view.dart';
@@ -61,6 +63,11 @@ class AppPages {
       name: _Paths.ORDER_LIST,
       page: () => const OrderListView(),
       binding: OrderBinding(),
+    ),
+    GetPage(
+      name: _Paths.MY_ACCOUNT,
+      page: () =>  MyAccountView(),
+      binding: MyAccountBinding(),
     ),
   ];
 }

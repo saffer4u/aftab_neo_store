@@ -1,7 +1,7 @@
-import '../../../common_controllers/global_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common_controllers/global_controller.dart';
 import '../../../components/progress_indicaters/on_loading.dart';
 import '../../../components/widgets/appbar.dart';
 import '../../../components/widgets/custom_text.dart';

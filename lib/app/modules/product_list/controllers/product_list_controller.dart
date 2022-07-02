@@ -1,7 +1,7 @@
-import '../../../routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import '../../../components/snackbars/small_snackbar.dart';
+import '../../../routes/app_pages.dart';
 import '../models/product_list_model.dart';
 import '../repositories/product_list_provider.dart';
 

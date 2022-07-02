@@ -4,6 +4,7 @@ import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
 
 class CustomTextField extends StatelessWidget {
+  final bool readOnly;
   final bool obscureText;
   final Widget? prefixIcon;
   final String? labelText;
@@ -17,6 +18,7 @@ class CustomTextField extends StatelessWidget {
   final AutovalidateMode? autoValid;
   final int? maxLength;
   CustomTextField({
+    this.readOnly = false,
     this.obscureText = false,
     this.prefixIcon,
     this.maxLines = 1,
@@ -40,6 +42,7 @@ class CustomTextField extends StatelessWidget {
         bottom: 6.0,
       ),
       child: TextFormField(
+        readOnly: readOnly,
         obscureText: obscureText,
         maxLines: maxLines,
         textCapitalization: textCapitalization,
@@ -57,6 +60,7 @@ class CustomTextField extends StatelessWidget {
           fontSize: 14,
         ),
         decoration: InputDecoration(
+          
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           filled: true,

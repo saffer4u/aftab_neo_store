@@ -12,10 +12,11 @@ import 'app/routes/app_pages.dart';
 //TODO : Update Drawer tile of cart item when item added/deleted from cart.
 
 void main() {
+  // Get.testMode = true;
   WidgetsFlutterBinding.ensureInitialized();
 
-  //* Set screen on the basis of user state defined in this controller
-  Get.put(AuthSetScreenController());
+ 
+ 
 
   //* Common controller for global methods
   //* - Get user data from any Screen
@@ -34,4 +35,6 @@ void main() {
       ),
     ),
   );
+   //* Set screen on the basis of user state defined in this controller
+   Get.put(AuthSetScreenController());
 }
