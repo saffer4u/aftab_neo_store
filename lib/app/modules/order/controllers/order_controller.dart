@@ -5,10 +5,18 @@ import '../../../components/dialog_boxes/simple_alert_dialog.dart';
 import '../../../components/snackbars/small_snackbar.dart';
 import '../../../constants/colors.dart';
 import '../../cart/controllers/cart_controller.dart';
+import '../models/order_details_response_model.dart';
 import '../models/order_list_response_model.dart';
 import '../repositories/order_provider.dart';
+import '../views/order_details_view.dart';
 
 class OrderController extends GetxController with StateMixin<dynamic> {
+  //*Variables
+  OrderDetailResponseModel orderDetails = OrderDetailResponseModel();
+  OrderListResponseModel orderList = OrderListResponseModel();
+  late int myOrderId;
+
+  //* FormKeys
   final addressFormKey = GlobalKey<FormState>();
 
   //* Text editing controllers ---->>>>>>>>>>>>>
@@ -71,10 +79,28 @@ class OrderController extends GetxController with StateMixin<dynamic> {
     super.onInit();
   }
 
+  //* Get full details of order
+  Future<void> getOrderDetails({required int orderId}) async {
+    myOrderId = orderId;
+
+    Get.to(() => OrderDetailsView());
+    change(null, status: RxStatus.loading());
+    orderDetails = await OrderProvider().getOrderDetails(orderId: orderId);
+    if (orderDetails.status == 200) {
+      if (orderDetails.data == null) {
+        change(null, status: RxStatus.empty());
+      } else {
+        change(orderList, status: RxStatus.success());
+      }
+    } else {
+      change(null, status: RxStatus.error());
+    }
+  }
+
   //* List orderd items
   Future<void> getOrderedItems() async {
     change(null, status: RxStatus.loading());
-    OrderListResponseModel orderList = await OrderProvider().getOrderList();
+    orderList = await OrderProvider().getOrderList();
     if (orderList.status == 200) {
       if (orderList.data == null) {
         change(null, status: RxStatus.empty());

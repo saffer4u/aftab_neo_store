@@ -23,35 +23,40 @@ class OrderListView extends GetView<OrderController> {
             itemCount: orderList.data!.length,
             separatorBuilder: (_, index) => Divider(height: 0),
             itemBuilder: (_, index) {
-              return Container(
-                padding: EdgeInsets.all(15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Order ID : ${orderList.data![index].id}",
-                          style: Get.theme.textTheme.headline6!.copyWith(
-                            color: BLACK_COLOR,
-                            fontSize: 18,
+              return InkWell(
+                onTap: () => controller.getOrderDetails(
+                    orderId: orderList.data![index].id!),
+                child: Container(
+                  padding: EdgeInsets.all(15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Order ID : ${orderList.data![index].id}",
+                            style: Get.theme.textTheme.headline6!.copyWith(
+                              color: BLACK_COLOR,
+                              fontSize: 18,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          "Orderd Date : ${orderList.data![index].created}",
-                          style: TextStyle(
-                            fontFamily: Font.Gotham,
-                          ),
-                        )
-                      ],
-                    ),
-                    Text(
-                      "₹ ${orderList.data![index].cost}",
-                      style: Get.theme.textTheme.headline2!.copyWith(color: BLACK_COLOR,fontSize: 20),
-                    )
-                  ],
+                          SizedBox(height: 20),
+                          Text(
+                            "Orderd Date : ${orderList.data![index].created}",
+                            style: TextStyle(
+                              fontFamily: Font.Gotham,
+                            ),
+                          )
+                        ],
+                      ),
+                      Text(
+                        "₹ ${orderList.data![index].cost}",
+                        style: Get.theme.textTheme.headline2!
+                            .copyWith(color: BLACK_COLOR, fontSize: 20),
+                      )
+                    ],
+                  ),
                 ),
               );
             },

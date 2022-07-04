@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../../common_controllers/global_controller.dart';
 import '../../../components/dialog_boxes/buy_now_dialog.dart';
 import '../../../components/dialog_boxes/rating_dialog.dart';
 import '../../../components/snackbars/small_snackbar.dart';
@@ -74,6 +75,7 @@ class ProductDetailController extends GetxController with StateMixin<dynamic> {
             );
 
             if (addToCartResponse.status == 200) {
+              await Get.find<GlobalController>().fetchUserData();
               change(productDetails, status: RxStatus.success());
 
               smallSnackbar(

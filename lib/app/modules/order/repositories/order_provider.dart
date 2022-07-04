@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../common_controllers/auth_set_screen.dart';
 import '../../../constants/paths.dart';
+import '../models/order_details_response_model.dart';
 import '../models/order_list_response_model.dart';
 import '../models/place_order_response_model.dart';
 
@@ -43,6 +44,27 @@ class OrderProvider extends GetConnect {
       log("Error while fetching Order List Products : $e");
       return OrderListResponseModel(
           status: 502, userMsg: "Something went wrong", message: "$e");
+    }
+  }
+
+  //* Get order details ----------->>>>>>>>>>>>>
+
+  Future<OrderDetailResponseModel> getOrderDetails(
+      {required int orderId}) async {
+    try {
+      final response = await get(
+        FULL_ORDER_DETAILS_API_URL,
+        headers: {
+          "access_token": Get.find<AuthSetScreenController>().getToken!,
+        },
+        query: {"order_id": orderId.toString()},
+      );
+
+      log(response.body.toString());
+      return orderDetailResponseModelFromJson(response.body);
+    } catch (e) {
+      log("Error on get order details : $e");
+      return OrderDetailResponseModel(status: 502);
     }
   }
 }

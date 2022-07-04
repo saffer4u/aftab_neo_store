@@ -46,4 +46,7 @@ const CHANGE_PASSWORD_API_URL =
 const UPDATE_PROFILE_API_URL =
     "http://staging.php-dev.in:8844/trainingapp/api/users/update";
 
+const FULL_ORDER_DETAILS_API_URL =
+    "http://staging.php-dev.in:8844/trainingapp/api/orderDetail";
+
 const ACCESS_TOKEN = "accessToken";
