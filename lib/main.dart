@@ -10,6 +10,8 @@ import 'app/constants/colors.dart';
 import 'app/routes/app_pages.dart';
 
 //TODO : Update Drawer tile of cart item when item added/deleted from cart.
+//* Include this line where need to fetch user data again.
+// Get.find<GlobalController>().userData = await UserDataProvider().getUserData();
 
 void main() {
   // Get.testMode = true;

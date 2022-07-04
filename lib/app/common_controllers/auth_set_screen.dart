@@ -25,15 +25,14 @@ class AuthSetScreenController extends GetxController {
       log("User logged out");
       Get.offAllNamed(Routes.AUTHENTICATION);
     } else {
-      Get.find<GlobalController>().userData = await UserDataProvider().getUserData();
+      await Get.find<GlobalController>().fetchUserData();
 
       if (Get.find<GlobalController>().userData.status == 200) {
         Get.offAllNamed(Routes.DRAWER);
       } else {
         Get.to(() => OnError(
-              onRefresh: ()  {
+              onRefresh: () {
                 // userData = await UserDataProvider().getUserData();
-
               },
               errText:
                   "Something went wrong...\nPlease check your internet connection",

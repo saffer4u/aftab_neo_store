@@ -1,12 +1,22 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../constants/colors.dart';
 import '../modules/drawer/models/fetch_user_data_model.dart';
+import '../modules/drawer/repositories/user_data_provider.dart';
 
 class GlobalController extends GetxController {
-
   FetchUserDataModel userData = FetchUserDataModel();
+
+  //* Get User Data
+  Future<void> fetchUserData() async {
+    userData = await UserDataProvider().getUserData();
+    update();
+    log("User Data fetched from API");
+  }
+
   //* Image loading builder
   Widget loadingBuilder(
       BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {

@@ -1,15 +1,13 @@
-import 'package:aftab_neo_store/app/components/widgets/appbar.dart';
-import 'package:aftab_neo_store/app/components/widgets/background_image.dart';
-import 'package:aftab_neo_store/app/components/widgets/customButton.dart';
-import 'package:aftab_neo_store/app/components/widgets/customTextField.dart';
-import 'package:aftab_neo_store/app/components/widgets/on_error.dart';
-import 'package:aftab_neo_store/app/constants/colors.dart';
-import 'package:aftab_neo_store/app/modules/my_account/controllers/my_account_controller.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../../../components/progress_indicaters/on_loading.dart';
+import '../../../components/widgets/appbar.dart';
+import '../../../components/widgets/background_image.dart';
+import '../../../components/widgets/customButton.dart';
+import '../../../components/widgets/customTextField.dart';
+import '../../../constants/colors.dart';
+import '../controllers/my_account_controller.dart';
 
 class ResetPasswordView extends GetView<MyAccountController> {
   const ResetPasswordView({Key? key}) : super(key: key);
