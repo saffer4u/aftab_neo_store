@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../common_controllers/global_controller.dart';
 import '../../../components/snackbars/small_snackbar.dart';
 import '../../../constants/colors.dart';
 import '../../../routes/app_pages.dart';
@@ -75,12 +76,15 @@ class CartController extends GetxController with StateMixin<dynamic> {
         await CartDeleteItemProvider().deteCartItem(productId: productId);
     await fetchCartProducts();
     if (cartDeleteItemResponse.status == 200) {
+      await Get.find<GlobalController>().fetchUserData();
       smallSnackbar(
         text: cartDeleteItemResponse.userMsg!,
         textColor: WHITE_COLOR,
         backgroundColor: GREEN_COLOR,
         backgroundColorOpacity: 1,
       );
+      //* Fetch user Data
+      
     } else {
       smallSnackbar(
         text:

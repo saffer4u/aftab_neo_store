@@ -37,46 +37,42 @@ class DrawerMenuTile extends GetView<MainDrawerController> {
             controller.drawerMenuItems[index].title,
             style: Theme.of(context).textTheme.headline6,
           ),
-          trailing: Builder(builder: (_) {
+          trailing: GetBuilder<GlobalController>(builder: (globalController) {
             //* Show no. of items in cart as red bubble
             if (controller.drawerMenuItems[index].menuItem ==
                     MyMenuItem.myCart &&
-                Get.find<GlobalController>().userData.data!.totalCarts != 0) {
+                globalController.userData.data!.totalCarts != 0) {
               return CircleAvatar(
                 radius: 18,
                 backgroundColor: RED_COLOR800,
                 child: FittedBox(
                   child: Text(
-                    Get.find<GlobalController>()
-                        .userData
-                        .data!
-                        .totalCarts
-                        .toString(),
+                    globalController.userData.data!.totalCarts.toString(),
                     style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
               );
             }
-           
+
             //* Show no. of items in my Orders as red bubble
-            if (controller.drawerMenuItems[index].menuItem ==
-                    MyMenuItem.myOrder &&
-                Get.find<GlobalController>().userData.data!.totalOrders != 0) {
-              return CircleAvatar(
-                radius: 18,
-                backgroundColor: RED_COLOR800,
-                child: FittedBox(
-                  child: Text(
-                    Get.find<GlobalController>()
-                        .userData
-                        .data!
-                        .totalOrders
-                        .toString(),
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                ),
-              );
-            }
+            // if (controller.drawerMenuItems[index].menuItem ==
+            //         MyMenuItem.myOrder &&
+            //     Get.find<GlobalController>().userData.data!.totalOrders != 0) {
+            //   return CircleAvatar(
+            //     radius: 18,
+            //     backgroundColor: RED_COLOR800,
+            //     child: FittedBox(
+            //       child: Text(
+            //         Get.find<GlobalController>()
+            //             .userData
+            //             .data!
+            //             .totalOrders
+            //             .toString(),
+            //         style: Theme.of(context).textTheme.headline4,
+            //       ),
+            //     ),
+            //   );
+            // }
             return SizedBox.shrink();
           }),
         );

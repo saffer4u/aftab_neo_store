@@ -75,6 +75,7 @@ class ProductDetailController extends GetxController with StateMixin<dynamic> {
             );
 
             if (addToCartResponse.status == 200) {
+              //* Fetch user data after adding to cart
               await Get.find<GlobalController>().fetchUserData();
               change(productDetails, status: RxStatus.success());
 

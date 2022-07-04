@@ -27,6 +27,7 @@ class ProductDetailView extends GetView<ProductDetailController> {
       body: controller.obx(
         (state) {
           final detail = state as ProductDetailsModel;
+
           return Column(
             children: [
               Container(
@@ -165,30 +166,32 @@ class ProductDetailView extends GetView<ProductDetailController> {
                         ),
                         const Divider(),
                         Expanded(
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
-                                child: Row(
-                                  children: [
-                                    CustomText(
-                                      text: "DESCRIPTION",
-                                      color: BLACK_COLOR.withOpacity(0.87),
-                                    ),
-                                  ],
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Row(
+                                    children: [
+                                      CustomText(
+                                        text: "DESCRIPTION",
+                                        color: BLACK_COLOR.withOpacity(0.87),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 15.0, vertical: 10),
-                                child: CustomText(
-                                  text: detail.data!.description!,
-                                  fontName: Font.Gotham,
-                                  size: 12,
-                                  color: BLACK_COLOR.withOpacity(0.57),
-                                ),
-                              )
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15.0, vertical: 10),
+                                  child: CustomText(
+                                    text: detail.data!.description!,
+                                    fontName: Font.Gotham,
+                                    size: 12,
+                                    color: BLACK_COLOR.withOpacity(0.57),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -208,7 +211,7 @@ class ProductDetailView extends GetView<ProductDetailController> {
                     children: [
                       Expanded(
                         child: CustomButton(
-                          navigation: controller.buyNow,
+                            navigation: controller.buyNow,
                             verticalPadding: 5,
                             horizontalPadding: 5,
                             text: "BUY NOW",
@@ -217,8 +220,7 @@ class ProductDetailView extends GetView<ProductDetailController> {
                       ),
                       Expanded(
                         child: CustomButton(
-                            navigation: 
-                                controller.rating,
+                            navigation: controller.rating,
                             verticalPadding: 5,
                             horizontalPadding: 5,
                             text: "RATE",

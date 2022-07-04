@@ -8,6 +8,7 @@ import '../../../common_controllers/auth_set_screen.dart';
 import '../../../common_controllers/global_controller.dart';
 import '../../../components/dialog_boxes/simple_alert_dialog.dart';
 import '../../../components/enums.dart';
+import '../../../components/snackbars/small_snackbar.dart';
 import '../../../routes/app_pages.dart';
 import '../models/menu_item_model.dart';
 
@@ -96,6 +97,9 @@ class MainDrawerController extends GetxController {
         break;
       case MyMenuItem.myAccount:
         Get.toNamed(Routes.MY_ACCOUNT);
+        break;
+      case MyMenuItem.storeLocator:
+        smallSnackbar(text: "Not available");
         break;
       case MyMenuItem.myOrder:
         Get.toNamed(Routes.ORDER_LIST, arguments: true);

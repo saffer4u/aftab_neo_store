@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common_controllers/global_controller.dart';
 import '../../../components/dialog_boxes/simple_alert_dialog.dart';
 import '../../../components/snackbars/small_snackbar.dart';
 import '../../../constants/colors.dart';
@@ -146,7 +147,9 @@ class OrderController extends GetxController with StateMixin<dynamic> {
 
             // change(null, status: RxStatus.success());
             // Get.back();
-            Get.find<CartController>().fetchCartProducts();
+            await Get.find<CartController>().fetchCartProducts();
+            //* Fetch user data from api
+            await Get.find<GlobalController>().fetchUserData();
           },
         ),
       );
