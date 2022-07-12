@@ -31,63 +31,67 @@ class ForgetPasswordView extends GetView<AuthenticationController> {
       body: controller.obx(
         (state) => BackgroundImage(
           child: Center(
-            child: Column(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Form(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "NeoSOFT",
-                            style: Theme.of(context).textTheme.headline1,
-                          ),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          Form(
-                            key: controller.forgetPasswordFormKey,
-                            child: CustomTextField(
-                              controller: controller.emailController,
-                              validator: controller.validEmail,
-                              labelText: "Email",
-                              prefixIcon: const Icon(
-                                Icons.person,
-                                color: WHITE_COLOR,
+            child: SizedBox(
+              width: 500,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Form(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "NeoSOFT",
+                              style: Theme.of(context).textTheme.headline1,
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Form(
+                              key: controller.forgetPasswordFormKey,
+                              child: CustomTextField(
+                                controller: controller.emailController,
+                                validator: controller.validEmail,
+                                labelText: "Email",
+                                prefixIcon: const Icon(
+                                  Icons.person,
+                                  color: WHITE_COLOR,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          CustomButton(
-                            text: "SEND RECOVERY EMAIL",
-                            backgroundColor: WHITE_COLOR,
-                            textColor: RED_COLOR700,
-                            navigation: controller.forgetPassword,
-                          ),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          GestureDetector(
-                            onTap: () => controller.setScreen(AuthScreen.login),
-                            child: Text(
-                              "<<< BACK TO LOGIN",
-                              style: Theme.of(context).textTheme.headline3,
+                            SizedBox(
+                              height: 25,
                             ),
-                          ),
-                        ],
+                            CustomButton(
+                              text: "SEND RECOVERY EMAIL",
+                              backgroundColor: WHITE_COLOR,
+                              textColor: RED_COLOR700,
+                              navigation: controller.forgetPassword,
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            GestureDetector(
+                              onTap: () =>
+                                  controller.setScreen(AuthScreen.login),
+                              child: Text(
+                                "<<< BACK TO LOGIN",
+                                style: Theme.of(context).textTheme.headline3,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
-         onLoading: OnLoading(
+        onLoading: OnLoading(
           loadingText: "Sending verification email, please wait...",
         ),
       ),
