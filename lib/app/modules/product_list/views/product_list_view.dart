@@ -26,91 +26,185 @@ class ProductListView extends GetView<ProductListController> {
       body: controller.obx(
         (state) {
           final products = state as ProductsListModel;
-          return ListView.separated(
-            physics: BouncingScrollPhysics(),
-            itemCount: products.data!.length,
-            separatorBuilder: (_, index) {
-              return Divider(
-                height: 0,
-              );
-            },
-            itemBuilder: (_, index) {
-              return InkWell(
-                onTap: () => controller.onPressedProductTile(
-                  productId: products.data![index].id!,
-                  productIndex: index,
+          return LayoutBuilder(builder: (context, cnstrn) {
+            if (cnstrn.maxWidth > 800) {
+              return GridView.builder(
+                padding: EdgeInsets.all(10),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: cnstrn.maxWidth > 1100 ? 3 : 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 3,
                 ),
-                child: Card(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: Image.network(
-                            products.data![index].productImages!,
-                            fit: BoxFit.cover,
-                            loadingBuilder: Get.find<GlobalController>().loadingBuilder,
+                itemCount: products.data!.length,
+                itemBuilder: (_, index) {
+                  return InkWell(
+                    onTap: () => controller.onPressedProductTile(
+                      productId: products.data![index].id!,
+                      productIndex: index,
+                    ),
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: Image.network(
+                              products.data![index].productImages!,
+                              fit: BoxFit.cover,
+                              loadingBuilder:
+                                  Get.find<GlobalController>().loadingBuilder,
+                            ),
+                            width: Get.size.width / 10,
                           ),
-                          height: 100,
-                          width: 120,
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width - 144,
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomText(
-                              text: products.data![index].name!,
-                              color: BLACK_COLOR,
-                              size: 16,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 5.0),
-                              child: CustomText(
-                                text: products.data![index].producer!,
-                                color: Colors.grey.shade700,
-                                size: 13,
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8.0),
-                                  child: CustomText(
-                                    text:
-                                        "Rs. ${products.data![index].cost!.toString()}",
-                                    color: RED_COLOR700,
-                                    fontName: Font.GothamBold,
+                          Center(
+                            child: Container(
+                              // width: MediaQuery.of(context).size.width - 144,
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomText(
+                                    text: products.data![index].name!,
+                                    color: BLACK_COLOR,
                                     size: 16,
                                   ),
-                                ),
-                                Spacer(),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: AbsorbPointer(
-                                    child: Rating(
-                                      rating: products.data![index].rating!
-                                          .toDouble(),
-                                      iconSize: 20,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 5.0),
+                                    child: CustomText(
+                                      text: products.data![index].producer!,
+                                      color: Colors.grey.shade700,
+                                      size: 13,
                                     ),
                                   ),
-                                )
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 8.0),
+                                        child: CustomText(
+                                          text:
+                                              "Rs. ${products.data![index].cost!.toString()}",
+                                          color: RED_COLOR700,
+                                          fontName: Font.GothamBold,
+                                          size: 16,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 10),
+                                        child: AbsorbPointer(
+                                          child: Rating(
+                                            rating: products
+                                                .data![index].rating!
+                                                .toDouble(),
+                                            iconSize: 20,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            } else {
+              return ListView.separated(
+                physics: BouncingScrollPhysics(),
+                itemCount: products.data!.length,
+                separatorBuilder: (_, index) {
+                  return Divider(
+                    height: 0,
+                  );
+                },
+                itemBuilder: (_, index) {
+                  return InkWell(
+                    onTap: () => controller.onPressedProductTile(
+                      productId: products.data![index].id!,
+                      productIndex: index,
+                    ),
+                    child: Card(
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              child: Image.network(
+                                products.data![index].productImages!,
+                                fit: BoxFit.cover,
+                                loadingBuilder:
+                                    Get.find<GlobalController>().loadingBuilder,
+                              ),
+                              height: 100,
+                              width: 120,
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width - 144,
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText(
+                                  text: products.data![index].name!,
+                                  color: BLACK_COLOR,
+                                  size: 16,
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 5.0),
+                                  child: CustomText(
+                                    text: products.data![index].producer!,
+                                    color: Colors.grey.shade700,
+                                    size: 13,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0),
+                                      child: CustomText(
+                                        text:
+                                            "Rs. ${products.data![index].cost!.toString()}",
+                                        color: RED_COLOR700,
+                                        fontName: Font.GothamBold,
+                                        size: 16,
+                                      ),
+                                    ),
+                                    Spacer(),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: AbsorbPointer(
+                                        child: Rating(
+                                          rating: products.data![index].rating!
+                                              .toDouble(),
+                                          iconSize: 20,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
               );
-            },
-          );
+            }
+          });
         },
         onLoading: OnLoading(
           loadingText: "Please wait...",

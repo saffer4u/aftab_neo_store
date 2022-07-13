@@ -18,81 +18,84 @@ class OrderNoWView extends GetView<OrderController> {
       appBar: customAppBar(text: "Address"),
       body: controller.obx(
         (state) {
-          return SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.all(15),
-              child: Form(
-                key: controller.addressFormKey,
-                child: Column(
-                  children: [
-                    CustomTextformField2(
-                      validator: controller.validateAddress,
-                      controller: controller.addressController,
-                      maxLines: 3,
-                      labelText: "ADDRESS*",
-                    ),
-                    SizedBox(height: 20),
-                    CustomTextformField2(
-                      controller: controller.cityLandmarkController,
-                      maxLines: 1,
-                      labelText: "CITY",
-                      hintText: "LANDMARK",
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextformField2(
-                            errorMaxLines: 2,
-                            validator: controller.validateCity,
-                            controller: controller.cityController,
-                            labelText: "CITY*",
-                          ),
-                        ),
-                        Expanded(
-                          child: CustomTextformField2(
-                            errorMaxLines: 2,
-                            validator: controller.validateState,
-                            controller: controller.stateController,
-                            labelText: "STATE*",
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextformField2(
-                            errorMaxLines: 2,
-                            validator: controller.validateZipCode,
-                            controller: controller.zipCodeController,
-                            labelText: "ZIP CODE*",
-                            keyboardType: TextInputType.number,
-                          ),
-                        ),
-                        Expanded(
-                          child: CustomTextformField2(
-                            errorMaxLines: 2,
-                            validator: controller.validateCountry,
-                            controller: controller.countryController,
-                            labelText: "COUNTRY*",
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 40),
-                    SizedBox(
-                      height: 60,
-                      child: CustomButton(
-                        navigation: controller.placeOrder,
-                        backgroundColor: RED_COLOR700,
-                        text: "PLACE ORDER",
-                        textColor: WHITE_COLOR,
-                        horizontalPadding: 0,
+          return Center(
+            child: SingleChildScrollView(
+              child: Container(
+                width: 600,
+                padding: EdgeInsets.all(15),
+                child: Form(
+                  key: controller.addressFormKey,
+                  child: Column(
+                    children: [
+                      CustomTextformField2(
+                        validator: controller.validateAddress,
+                        controller: controller.addressController,
+                        maxLines: 3,
+                        labelText: "ADDRESS*",
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 20),
+                      CustomTextformField2(
+                        controller: controller.cityLandmarkController,
+                        maxLines: 1,
+                        labelText: "CITY",
+                        hintText: "LANDMARK",
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTextformField2(
+                              errorMaxLines: 2,
+                              validator: controller.validateCity,
+                              controller: controller.cityController,
+                              labelText: "CITY*",
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTextformField2(
+                              errorMaxLines: 2,
+                              validator: controller.validateState,
+                              controller: controller.stateController,
+                              labelText: "STATE*",
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTextformField2(
+                              errorMaxLines: 2,
+                              validator: controller.validateZipCode,
+                              controller: controller.zipCodeController,
+                              labelText: "ZIP CODE*",
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTextformField2(
+                              errorMaxLines: 2,
+                              validator: controller.validateCountry,
+                              controller: controller.countryController,
+                              labelText: "COUNTRY*",
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 40),
+                      SizedBox(
+                        height: 60,
+                        child: CustomButton(
+                          navigation: controller.placeOrder,
+                          backgroundColor: RED_COLOR700,
+                          text: "PLACE ORDER",
+                          textColor: WHITE_COLOR,
+                          horizontalPadding: 0,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

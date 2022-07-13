@@ -19,47 +19,63 @@ class OrderListView extends GetView<OrderController> {
       body: controller.obx(
         (state) {
           final orderList = state as OrderListResponseModel;
-          return ListView.separated(
-            itemCount: orderList.data!.length,
-            separatorBuilder: (_, index) => Divider(height: 0),
-            itemBuilder: (_, index) {
-              return InkWell(
-                onTap: () => controller.getOrderDetails(
-                    orderId: orderList.data![index].id!),
-                child: Container(
-                  padding: EdgeInsets.all(15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Order ID : ${orderList.data![index].id}",
-                            style: Get.theme.textTheme.headline6!.copyWith(
-                              color: BLACK_COLOR,
-                              fontSize: 18,
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Center(
+              child: SizedBox(
+                width: 600,
+                child: ListView.separated(
+                  itemCount: orderList.data!.length,
+                  separatorBuilder: (_, index) => SizedBox(height: 10),
+                  itemBuilder: (_, index) {
+                    return InkWell(
+                      onTap: () => controller.getOrderDetails(
+                          orderId: orderList.data![index].id!),
+                      child: Container(
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: WHITE_COLOR,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(color: GREY_COLOR, blurRadius: 2),
+
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Order ID : ${orderList.data![index].id}",
+                                  style: Get.theme.textTheme.headline6!.copyWith(
+                                    color: BLACK_COLOR,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                Text(
+                                  "Orderd Date : ${orderList.data![index].created}",
+                                  style: TextStyle(
+                                    fontFamily: Font.Gotham,
+                                  ),
+                                )
+                              ],
                             ),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Orderd Date : ${orderList.data![index].created}",
-                            style: TextStyle(
-                              fontFamily: Font.Gotham,
-                            ),
-                          )
-                        ],
+                            Text(
+                              "₹ ${orderList.data![index].cost}",
+                              style: Get.theme.textTheme.headline2!
+                                  .copyWith(color: BLACK_COLOR, fontSize: 20),
+                            )
+                          ],
+                        ),
                       ),
-                      Text(
-                        "₹ ${orderList.data![index].cost}",
-                        style: Get.theme.textTheme.headline2!
-                            .copyWith(color: BLACK_COLOR, fontSize: 20),
-                      )
-                    ],
-                  ),
+                    );
+                  },
                 ),
-              );
-            },
+              ),
+            ),
           );
         },
         onLoading: OnLoading(

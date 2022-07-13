@@ -18,54 +18,57 @@ class ResetPasswordView extends GetView<MyAccountController> {
       body: controller.obx(
         (state) {
           return BackgroundImage(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-              child: Form(
-                key: controller.resetPasswordFormKey,
-                child: Column(
-                  children: [
-                    Text(
-                      "NeoSTORE",
-                      style: Get.theme.textTheme.headline1,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    CustomTextField(
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: WHITE_COLOR,
+            child: Center(
+              child: Container(
+                width: 600,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                child: Form(
+                  key: controller.resetPasswordFormKey,
+                  child: Column(
+                    children: [
+                      Text(
+                        "NeoSTORE",
+                        style: Get.theme.textTheme.headline1,
                       ),
-                      controller: controller.oldPasswordController,
-                      labelText: "Current Password",
-                      validator: controller.validPassword,
-                    ),
-                    CustomTextField(
-                      validator: controller.validNewPassword,
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: WHITE_COLOR,
+                      SizedBox(
+                        height: 20,
                       ),
-                      controller: controller.passwordController,
-                      labelText: "New Password",
-                    ),
-                    CustomTextField(
-                      validator: controller.validNewPassword,
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: WHITE_COLOR,
+                      CustomTextField(
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: WHITE_COLOR,
+                        ),
+                        controller: controller.oldPasswordController,
+                        labelText: "Current Password",
+                        validator: controller.validPassword,
                       ),
-                      controller: controller.confirmPasswordController,
-                      labelText: "Confirm Password",
-                    ),
-                    SizedBox(height: 30),
-                    CustomButton(
-                      navigation: controller.resetPassword,
-                      text: "RESET PASSWORD",
-                      textColor: RED_COLOR700,
-                      backgroundColor: WHITE_COLOR,
-                    ),
-                  ],
+                      CustomTextField(
+                        validator: controller.validNewPassword,
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: WHITE_COLOR,
+                        ),
+                        controller: controller.passwordController,
+                        labelText: "New Password",
+                      ),
+                      CustomTextField(
+                        validator: controller.validNewPassword,
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: WHITE_COLOR,
+                        ),
+                        controller: controller.confirmPasswordController,
+                        labelText: "Confirm Password",
+                      ),
+                      SizedBox(height: 30),
+                      CustomButton(
+                        navigation: controller.resetPassword,
+                        text: "RESET PASSWORD",
+                        textColor: RED_COLOR700,
+                        backgroundColor: WHITE_COLOR,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

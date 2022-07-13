@@ -4,14 +4,12 @@ import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
 import 'custom_text.dart';
 
-
 AppBar customAppBar(
     {required String text,
     double size = 16,
     Widget? leading,
     List<Widget>? action}) {
   return AppBar(
-    
     actions: action,
     leading: leading,
     backgroundColor: RED_COLOR800,
@@ -21,7 +19,7 @@ AppBar customAppBar(
     title: CustomText(
       text: text,
       size: size,
-      fontName:Font.GothamBold,
+      fontName: Font.GothamBold,
     ),
   );
 }

@@ -23,6 +23,10 @@ void main() {
   Get.put<GlobalController>(GlobalController());
   runApp(
     GetMaterialApp(
+      onInit: (){
+        //* Set screen on the basis of user state defined in this controller
+        Get.put(AuthSetScreenController());
+      },
       debugShowCheckedModeBanner: false,
       title: "NeoStore",
       theme: appThemeData,
@@ -35,6 +39,5 @@ void main() {
       ),
     ),
   );
-   //* Set screen on the basis of user state defined in this controller
-   Get.put(AuthSetScreenController());
+   
 }
